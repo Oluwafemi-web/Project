@@ -103,7 +103,7 @@ const Footer = () => {
       </div>
       <div style={{ color: "white" }}>
         <hr />
-        <p>© 2022-2023, Gabinoisl | Powered by Gregchris™</p>
+        <p>© 2022-2023, Gabinoisl</p>
       </div>
     </footer>
   );

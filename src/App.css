@@ -2,6 +2,9 @@
 * {
   box-sizing: border-box;
 }
+ul {
+  padding: 0 !important;
+}
 
 #root {
   display: flex;
@@ -139,6 +142,13 @@ header {
   padding: 0 !important;
   border: none !important;
 }
+.nav-link {
+  color: white !important;
+  font-size: 1.2rem !important;
+  display: flex !important;
+  align-items: center !important;
+  position: relative !important;
+}
 .features {
   display: flex;
   align-items: center;
@@ -149,4 +159,58 @@ header {
 }
 footer ul {
   list-style-type: none;
+}
+.account-parent {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+.account-parent li,
+.account-sub li {
+  /* background-color: #1e1f1f;
+  padding: 10px;
+  border-radius: 20px;
+  width: 50px;
+  text-align: center; */
+  list-style-type: none;
+}
+.account-parent li a,
+.account-sub li a {
+  color: #fff;
+}
+.account-parent li a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.account-parent {
+  display: inline-block;
+  position: relative;
+}
+.account-sub {
+  display: none;
+  position: absolute;
+  margin-top: 0.8rem;
+  margin-left: -2.5rem;
+  background-color: #fff;
+  border-radius: 6px;
+  width: 9rem;
+}
+.account-sub li {
+  padding: 1rem;
+}
+.account-sub li:hover {
+  background-color: #fff;
+}
+.account-sub li a {
+  color: #000;
+  text-decoration: none;
+
+  cursor: pointer;
+}
+.account-sub li:hover {
+  background-color: #efefef;
+}
+.account-sub.visible {
+  display: block;
 }

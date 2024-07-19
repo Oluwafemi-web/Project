@@ -15,7 +15,7 @@ import Product from "./components/Pages/Product";
 import Shop from "./components/Pages/Shop";
 import ShopAll from "./components/Pages/ShopAll";
 import Search from "./components/Pages/Search";
-
+import Login from "./components/login";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import ProductContext from "./store/product-context";
@@ -80,6 +80,10 @@ const router = createBrowserRouter([
         path: "/search/:product",
         element: <Search />,
       },
+      {
+        path: "/login",
+        element: <Login />,
+      },
     ],
   },
 ]);
@@ -88,7 +92,7 @@ function App() {
   const { changeProductData, changeBlogPosts } = useContext(ProductContext);
   const [products, setProducts] = useState();
   const [blog, setBlog] = useState();
-  
+
   useEffect(() => {
     sanityClient
       .fetch(
@@ -115,7 +119,6 @@ function App() {
       .then((data) => setProducts(data))
       .catch(console.error);
   }, []);
-  console.log(products);
 
   useEffect(() => {
     sanityClient
@@ -141,7 +144,6 @@ function App() {
       .then((data) => setBlog(data))
       .catch(console.error);
   }, []);
-  console.log(blog);
 
   useEffect(() => {
     if (products) {

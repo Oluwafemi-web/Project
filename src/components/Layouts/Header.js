@@ -1,7 +1,10 @@
 import { useState, useEffect, useContext } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { Nav, Navbar, Container, Badge } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { IoIosArrowDown } from "react-icons/io";
+import { FaUser } from "react-icons/fa6";
+import { FaSignInAlt } from "react-icons/fa";
 import SearchModal from "./Home/SearchModal";
 import ProductContext from "../../store/product-context";
 
@@ -10,7 +13,10 @@ import Gabinoisl from "../../images/gabinoisl-logo.png";
 const Header = () => {
   const [cartItemCount, setCartItemCount] = useState(0);
   const { cartData } = useContext(ProductContext);
-
+  const [isSubMenuVisible, setIsSubMenuVisible] = useState(false);
+  const toggleSubMenu = () => {
+    setIsSubMenuVisible(!isSubMenuVisible);
+  };
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -29,7 +35,10 @@ const Header = () => {
     <header>
       <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary">
         <Container style={{ maxWidth: "100%", backgroundColor: "black" }}>
-          <Navbar.Toggle aria-controls="responsive-navbar-nav" className="bg-light" />
+          <Navbar.Toggle
+            aria-controls="responsive-navbar-nav"
+            className="bg-light"
+          />
           <Navbar.Brand href="/" style={{ width: "12rem" }}>
             <img
               src={Gabinoisl}
@@ -82,7 +91,6 @@ const Header = () => {
               >
                 Lamps
               </NavLink>
-
             </Nav>
           </Navbar.Collapse>
           <Nav style={{ flexDirection: "row", gap: "1rem" }}>
@@ -90,30 +98,53 @@ const Header = () => {
               onClick={searchHandler}
               exact
               className="nav-link"
-              style={{ color: "white", fontSize: "1.2rem", }}
+              style={{ color: "white", fontSize: "1.2rem" }}
             >
               <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" />
             </NavLink>
-            <NavLink
-              to="/cart"
-              exact
-              className="nav-link"
-              style={{ 
-                color: "white", 
-                fontSize: "1.2rem", 
-                display: "flex",
-                alignItems: "center",
-                position: "relative",
-              }}
-            >
+            <ul className="account-parent">
+              <li>
+                <NavLink
+                  to=""
+                  exact
+                  className="nav-link"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    toggleSubMenu();
+                  }}
+                >
+                  <FaUser />
+                  <IoIosArrowDown />
+                </NavLink>
+                <ul
+                  className={`account-sub ${isSubMenuVisible ? "visible" : ""}`}
+                >
+                  <li>
+                    <a>
+                      {" "}
+                      <FaUser /> My Account
+                    </a>
+                  </li>
+                  <li>
+                    <Link to="/login">
+                      {" "}
+                      <FaSignInAlt /> Sign In
+                    </Link>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+
+            <NavLink to="/cart" exact className="nav-link">
               <FontAwesomeIcon icon="fa-solid fa-cart-shopping" />
-              <Badge 
-                pill bg="danger" 
+              <Badge
+                pill
+                bg="danger"
                 id="cart-badge"
                 style={{
                   position: "absolute",
                   top: "-1px",
-                  right: "-0.5rem"
+                  right: "-0.5rem",
                 }}
               >
                 {cartItemCount}
