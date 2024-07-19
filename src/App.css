@@ -1,0 +1,152 @@
+/* custom.css */
+* {
+  box-sizing: border-box;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Override pagination item styles */
+.pagination .page-link {
+  background-color: white !important;
+  border-color: #dc3545 !important;
+  color: #dc3545 !important;
+}
+
+.pagination .page-link:hover {
+  background-color: #bb2d3b !important;
+  border-color: #b02a37 !important;
+  color: white !important;
+}
+
+/* Override active pagination item styles */
+.pagination .page-item.active .page-link {
+  background-color: #dc3545 !important;
+  border-color: #dc3545 !important;
+  color: white !important;
+}
+
+.product-item:hover,
+.shop-item:hover {
+  transform: scale(1.02);
+}
+
+footer a {
+  text-decoration: none;
+}
+
+.truncate-multi-line {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  /* Number of lines to show */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.loading-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.loading-logo {
+  width: 100px;
+  /* Adjust size as needed */
+  margin-bottom: 20px;
+}
+
+.loading-spinner {
+  width: 3rem;
+  height: 3rem;
+}
+
+.custom-alert {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1050;
+  width: 50%;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.custom-alert .alert {
+  margin: 0 auto;
+  text-align: center;
+}
+
+@media only screen and (min-width: 768px) {
+  .product-item,
+  .shop-item {
+    width: 18rem !important;
+  }
+
+  .product-item .row img {
+    height: 20rem !important;
+  }
+
+  .product-item .row .card-body {
+    padding-left: 2rem;
+  }
+
+  footer {
+    display: flex;
+    position: relative;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  footer > div {
+    width: 24%;
+  }
+
+  footer > div:last-child {
+    width: 100%;
+    position: relative;
+    bottom: 0;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+  }
+}
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.navbar,
+.banner-image {
+  padding: 0 !important;
+  border: none !important;
+}
+.features {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 80%;
+  margin: 0 auto;
+}
+footer ul {
+  list-style-type: none;
+}
