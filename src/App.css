@@ -214,3 +214,12 @@ footer ul {
 .account-sub.visible {
   display: block;
 }
+
+/* login page */
+#firebaseui-auth-container {
+  height: 64vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}

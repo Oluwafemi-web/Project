@@ -1,19 +1,21 @@
 import { useState, useEffect, useContext } from "react";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link, useLocation } from "react-router-dom";
 import { Nav, Navbar, Container, Badge } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IoIosArrowDown } from "react-icons/io";
 import { FaUser } from "react-icons/fa6";
-import { FaSignInAlt } from "react-icons/fa";
+import { FaSignInAlt, FaSignOutAlt } from "react-icons/fa";
 import SearchModal from "./Home/SearchModal";
 import ProductContext from "../../store/product-context";
-
+import { auth } from "../firebase";
+import { signOut } from "firebase/auth";
 import Gabinoisl from "../../images/gabinoisl-logo.png";
 
 const Header = () => {
   const [cartItemCount, setCartItemCount] = useState(0);
   const { cartData } = useContext(ProductContext);
   const [isSubMenuVisible, setIsSubMenuVisible] = useState(false);
+  const location = useLocation();
   const toggleSubMenu = () => {
     setIsSubMenuVisible(!isSubMenuVisible);
   };
@@ -21,15 +23,30 @@ const Header = () => {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
+  const user = auth.currentUser;
   const searchHandler = (e) => {
     e.preventDefault();
     handleShow();
   };
-
+  useEffect(() => {
+    setIsSubMenuVisible(false);
+  }, [location]);
   useEffect(() => {
     setCartItemCount(cartData.length);
   }, [cartData]);
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+      window.location.reload();
+    } catch (error) {
+      console.error("Error logging out:", error);
+    }
+  };
+  const handleClick = () => {
+    if (user) {
+      handleLogout();
+    }
+  };
 
   return (
     <header>
@@ -126,9 +143,10 @@ const Header = () => {
                     </a>
                   </li>
                   <li>
-                    <Link to="/login">
+                    <Link to={user ? "#" : "/login"} onClick={handleClick}>
                       {" "}
-                      <FaSignInAlt /> Sign In
+                      {user ? <FaSignInAlt /> : <FaSignOutAlt />}
+                      {user ? "Sign out" : "Sign In"}
                     </Link>
                   </li>
                 </ul>
