@@ -71,7 +71,7 @@ const Header = () => {
             >
               <NavLink
                 to="/shop/chandelier"
-                exact
+                exact="true"
                 className="nav-link"
                 style={{ color: "white" }}
                 state={{ value: "type" }}
@@ -81,7 +81,7 @@ const Header = () => {
 
               <NavLink
                 to="/shop/pendant lighting"
-                exact
+                exact="true"
                 className="nav-link"
                 style={{ color: "white" }}
                 state={{ value: "type" }}
@@ -91,7 +91,7 @@ const Header = () => {
 
               <NavLink
                 to="/shop/sockets & switches"
-                exact
+                exact="true"
                 className="nav-link"
                 style={{ color: "white" }}
                 state={{ value: "type" }}
@@ -101,7 +101,7 @@ const Header = () => {
 
               <NavLink
                 to="/shop/lamp"
-                exact
+                exact="true"
                 className="nav-link"
                 style={{ color: "white" }}
                 state={{ value: "type" }}
@@ -113,7 +113,7 @@ const Header = () => {
           <Nav style={{ flexDirection: "row", gap: "1rem" }}>
             <NavLink
               onClick={searchHandler}
-              exact
+              exact="true"
               className="nav-link"
               style={{ color: "white", fontSize: "1.2rem" }}
             >
@@ -123,7 +123,7 @@ const Header = () => {
               <li>
                 <NavLink
                   to=""
-                  exact
+                  exact="true"
                   className="nav-link"
                   onClick={(e) => {
                     e.preventDefault();
@@ -153,7 +153,7 @@ const Header = () => {
               </li>
             </ul>
 
-            <NavLink to="/cart" exact className="nav-link">
+            <NavLink to="/cart" exact="true" className="nav-link">
               <FontAwesomeIcon icon="fa-solid fa-cart-shopping" />
               <Badge
                 pill
