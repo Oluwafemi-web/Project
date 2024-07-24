@@ -16,6 +16,7 @@ import Shop from "./components/Pages/Shop";
 import ShopAll from "./components/Pages/ShopAll";
 import Search from "./components/Pages/Search";
 import Login from "./components/login";
+import Register from "./components/register";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import ProductContext from "./store/product-context";
@@ -83,6 +84,10 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login />,
+      },
+      {
+        path: "/register",
+        element: <Register />,
       },
     ],
   },

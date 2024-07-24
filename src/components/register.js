@@ -3,19 +3,21 @@ import React, { useState } from "react";
 import { auth, db } from "./firebase";
 import { setDoc, doc } from "firebase/firestore";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
+import logo from "../images/gabinoisl-logo.png";
 
 function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [fname, setFname] = useState("");
   const [lname, setLname] = useState("");
+  const navigate = useNavigate(); // Use the useNavigate hook
 
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
       await createUserWithEmailAndPassword(auth, email, password);
       const user = auth.currentUser;
-      console.log(user);
       if (user) {
         await setDoc(doc(db, "Users", user.uid), {
           email: user.email,
@@ -24,10 +26,10 @@ function Register() {
           photo: "",
         });
       }
-      console.log("User Registered Successfully!!");
       toast.success("User Registered Successfully!!", {
         position: "top-center",
       });
+      navigate("/login"); // Redirect to the login page
     } catch (error) {
       console.log(error.message);
       toast.error(error.message, {
@@ -37,8 +39,12 @@ function Register() {
   };
 
   return (
-    <form onSubmit={handleRegister}>
-      <h3>Sign Up</h3>
+    <form className="login-form" onSubmit={handleRegister}>
+      <div className="form-heading">
+        <img src={logo} alt="Gabinoisl Logo" />
+        <h3>Welcome to Gabinoisl</h3>
+        <h4>Sign Up</h4>
+      </div>
 
       <div className="mb-3">
         <label>First name</label>
@@ -94,4 +100,5 @@ function Register() {
     </form>
   );
 }
+
 export default Register;

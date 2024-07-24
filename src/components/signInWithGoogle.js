@@ -19,7 +19,7 @@ function SignInwithGoogle() {
         toast.success("User logged in Successfully", {
           position: "top-center",
         });
-        window.location.href = "/profile";
+        window.location.href = "/";
       }
     });
   }
@@ -30,7 +30,7 @@ function SignInwithGoogle() {
         style={{ display: "flex", justifyContent: "center", cursor: "pointer" }}
         onClick={googleLogin}
       >
-        <img src="" width={"60%"} />
+        <img src={require("../google.png")} width={"50%"} />
       </div>
     </div>
   );
