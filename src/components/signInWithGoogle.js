@@ -2,9 +2,11 @@ import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth, db } from "./firebase";
 import { toast } from "react-toastify";
 import { setDoc, doc } from "firebase/firestore";
+import google from "../images/google.png";
 
 function SignInwithGoogle() {
-  function googleLogin() {
+  function googleLogin(e) {
+    e.preventDefault();
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider).then(async (result) => {
       console.log(result);
@@ -25,13 +27,11 @@ function SignInwithGoogle() {
   }
   return (
     <div>
-      <p className="continue-p">--Or continue with--</p>
-      <div
-        style={{ display: "flex", justifyContent: "center", cursor: "pointer" }}
-        onClick={googleLogin}
-      >
-        <img src={require("../google.png")} width={"50%"} />
-      </div>
+      <p className="continue-p">Or continue with</p>
+      <button className="google-button" onClick={googleLogin}>
+        <img src={google} width={"7%"} />
+        <span>Sign in with Google</span>
+      </button>
     </div>
   );
 }

@@ -176,11 +176,6 @@ footer ul {
 }
 .account-parent li,
 .account-sub li {
-  /* background-color: #1e1f1f;
-  padding: 10px;
-  border-radius: 20px;
-  width: 50px;
-  text-align: center; */
   list-style-type: none;
 }
 .account-parent li a,
@@ -290,4 +285,34 @@ footer ul {
 .icons a:hover .layer span:nth-child(5) {
   opacity: 1;
   transform: translate(20px, -20px);
+}
+
+/* google button */
+.google-button {
+  display: flex;
+  gap: 10px;
+  background-color: transparent;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #0d6efd;
+  border-radius: 5px;
+  padding: 5px 0;
+}
+.continue-p {
+  position: relative;
+}
+.continue-p::before,
+.continue-p::after {
+  content: "";
+  position: absolute;
+  width: 38%;
+  background-color: #b2b2b2;
+  height: 1px;
+  top: 15px;
+}
+.continue-p::before {
+  left: 0;
+}
+.continue-p::after {
+  right: 0;
 }
